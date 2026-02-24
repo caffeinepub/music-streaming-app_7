@@ -1,0 +1,206 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "Frontend implementation for Music Stream app with playback, library, and playlists",
+  "requirements": [
+    {
+      "id": "REQ-2",
+      "summary": "Implement music player controls with play, pause, skip forward, and skip backward functionality",
+      "acceptanceCriteria": [
+        "Player displays currently playing song with title and artist",
+        "Play/pause button toggles playback state",
+        "Skip forward and backward buttons navigate between songs",
+        "Progress bar shows current playback position"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/hooks/useAudioPlayer.ts",
+          "operation": "create",
+          "description": "Create custom hook managing audio playback state, controlling HTML5 Audio API for play/pause/skip operations, tracking current song, playback position, and duration. Handle audio element lifecycle and progress updates."
+        },
+        {
+          "path": "frontend/src/components/MusicPlayer.tsx",
+          "operation": "create",
+          "description": "Create music player component displaying current song metadata (title, artist, album artwork from frontend/public/assets/generated/), play/pause button, skip forward/backward buttons, and progress bar with seek capability. Use useAudioPlayer hook for state management. Verify the shadcn-ui component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Wire MusicPlayer component into the main app layout, providing player context and positioning it as a fixed bottom player bar accessible across all views."
+        }
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "summary": "Build a browsable music library interface showing songs, albums, and artists in organized views",
+      "acceptanceCriteria": [
+        "Library view displays all available songs in a scrollable list",
+        "Albums view groups songs by album with album artwork",
+        "Artists view shows all artists with their songs",
+        "User can navigate between songs, albums, and artists views"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/LibraryPage.tsx",
+          "operation": "create",
+          "description": "Create library page with tab navigation for Songs, Albums, and Artists views. Fetch songs from backend using getAllSongs() method. Display album artwork using images from frontend/public/assets/generated/ (album-electronic.dim_400x400.png, album-folk.dim_400x400.png, album-hiphop.dim_400x400.png, album-classical.dim_400x400.png, album-rock.dim_400x400.png). Verify the shadcn-ui component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/components/SongList.tsx",
+          "operation": "create",
+          "description": "Create scrollable song list component displaying song title, artist, album, and duration. Include click handlers to play songs. Verify the shadcn-ui component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/components/AlbumGrid.tsx",
+          "operation": "create",
+          "description": "Create album grid component grouping songs by album, displaying album artwork from frontend/public/assets/generated/ and album name. Support clicking to view album details. Verify the shadcn-ui component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/components/ArtistList.tsx",
+          "operation": "create",
+          "description": "Create artist list component showing unique artists with their images from frontend/public/assets/generated/ (artist-male-1.dim_300x300.png, artist-female-1.dim_300x300.png, artist-band-1.dim_300x300.png). Support clicking to view artist's songs. Verify the shadcn-ui component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Wire LibraryPage into the app router as the main library route. Add navigation entry for accessing the library view."
+        }
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "summary": "Implement search functionality to find songs and artists by name",
+      "acceptanceCriteria": [
+        "Search bar accepts text input",
+        "Backend filters songs and artists matching search query",
+        "Search results display in real-time as user types",
+        "Results show both song titles and artist names"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/SearchBar.tsx",
+          "operation": "create",
+          "description": "Create search input component with debounced text input. Call backend searchSongs() method with search term. Display results showing song titles and artist names in real-time. Verify the shadcn-ui component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/pages/SearchPage.tsx",
+          "operation": "create",
+          "description": "Create dedicated search page featuring SearchBar component and search results display. Show filtered songs with album artwork from frontend/public/assets/generated/. Allow users to play songs directly from search results. Verify the shadcn-ui component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Wire SearchPage into the app router and add navigation entry for accessing search functionality."
+        }
+      ]
+    },
+    {
+      "id": "REQ-5",
+      "summary": "Create playlist management system allowing users to create, name, and add songs to custom playlists",
+      "acceptanceCriteria": [
+        "Users can create new playlists with custom names",
+        "Users can add songs to existing playlists",
+        "Users can view all songs in a playlist",
+        "Users can remove songs from playlists",
+        "Playlists persist across sessions"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/PlaylistsPage.tsx",
+          "operation": "create",
+          "description": "Create playlists page displaying all user playlists. Include button to create new playlists using backend createPlaylist() method. Show playlist names with song counts. Allow navigation to individual playlist details. Verify the shadcn-ui component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/components/CreatePlaylistDialog.tsx",
+          "operation": "create",
+          "description": "Create dialog component for creating new playlists with name input field. Call backend createPlaylist() method on submit. Verify the shadcn-ui component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/pages/PlaylistDetailPage.tsx",
+          "operation": "create",
+          "description": "Create playlist detail page showing playlist name and songs using backend getPlaylist() method. Display song list with album artwork from frontend/public/assets/generated/. Include button to add songs and ability to remove songs from playlist. Verify the shadcn-ui component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/components/AddToPlaylistDialog.tsx",
+          "operation": "create",
+          "description": "Create dialog component for adding songs to playlists. List available playlists and call backend addSongToPlaylist() method when user selects a playlist. Verify the shadcn-ui component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Wire PlaylistsPage and PlaylistDetailPage into the app router. Add navigation entry for accessing playlists."
+        }
+      ]
+    },
+    {
+      "id": "REQ-6",
+      "summary": "Design a mobile-optimized responsive interface with a cohesive modern music app visual theme featuring album artwork, smooth animations, and intuitive touch-friendly controls",
+      "acceptanceCriteria": [
+        "Interface adapts to mobile screen sizes",
+        "Touch targets are appropriately sized for mobile interaction",
+        "Visual design follows a consistent color scheme and typography",
+        "UI includes smooth transitions between views",
+        "Album artwork is prominently displayed where relevant"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/index.css",
+          "operation": "modify",
+          "description": "Add mobile-optimized CSS with music app theme including dark color scheme with vibrant accent colors, smooth transition animations, and mobile-first responsive typography. Ensure touch-friendly spacing and button sizes."
+        },
+        {
+          "path": "frontend/tailwind.config.js",
+          "operation": "modify",
+          "description": "Configure Tailwind with custom music app theme colors, mobile breakpoints, and animation utilities. Define color palette suitable for dark music streaming interface with vibrant highlights."
+        },
+        {
+          "path": "frontend/src/components/Layout.tsx",
+          "operation": "create",
+          "description": "Create responsive layout component with mobile-optimized navigation bar, bottom player bar space, and smooth page transitions. Use flexbox for responsive stacking on mobile. Verify the shadcn-ui component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Wrap all routes with Layout component to apply consistent responsive structure and theme across the application."
+        }
+      ]
+    },
+    {
+      "id": "REQ-7",
+      "summary": "Display generated album artwork and artist images as static assets throughout the music library interface",
+      "acceptanceCriteria": [
+        "Album covers display in the library view",
+        "Artist images appear in artist listings",
+        "Player interface shows current song's album artwork",
+        "Images load from frontend/public/assets/generated directory"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/utils/imageMapper.ts",
+          "operation": "create",
+          "description": "Create utility functions mapping song metadata (genre/album/artist) to generated image filenames from frontend/public/assets/generated/. Map albums to album-electronic.dim_400x400.png, album-folk.dim_400x400.png, album-hiphop.dim_400x400.png, album-classical.dim_400x400.png, album-rock.dim_400x400.png and artists to artist-male-1.dim_300x300.png, artist-female-1.dim_300x300.png, artist-band-1.dim_300x300.png based on metadata patterns."
+        },
+        {
+          "path": "frontend/src/components/AlbumArtwork.tsx",
+          "operation": "create",
+          "description": "Create reusable album artwork component that accepts song/album data and displays the appropriate generated image from frontend/public/assets/generated/ using imageMapper utility. Include fallback placeholder and loading states."
+        },
+        {
+          "path": "frontend/src/components/SongList.tsx",
+          "operation": "modify",
+          "description": "Integrate AlbumArtwork component to display album covers (album-electronic.dim_400x400.png, album-folk.dim_400x400.png, album-hiphop.dim_400x400.png, album-classical.dim_400x400.png, album-rock.dim_400x400.png) next to each song in the list."
+        },
+        {
+          "path": "frontend/src/components/MusicPlayer.tsx",
+          "operation": "modify",
+          "description": "Integrate AlbumArtwork component to display current song's album cover from frontend/public/assets/generated/ in the player interface prominently."
+        },
+        {
+          "path": "frontend/src/components/ArtistList.tsx",
+          "operation": "modify",
+          "description": "Display artist images using artist-male-1.dim_300x300.png, artist-female-1.dim_300x300.png, artist-band-1.dim_300x300.png from frontend/public/assets/generated/ mapped via imageMapper utility."
+        }
+      ]
+    }
+  ]
+}

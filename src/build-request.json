@@ -1,0 +1,165 @@
+{
+  "kind": "build_request",
+  "title": "Create music streaming app with playback, library, and playlists",
+  "projectName": "Music Stream",
+  "priority": "normal",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "text": "Create a music library backend that stores songs with metadata including title, artist, album, duration, and audio file reference",
+      "target": "backend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "Create a song app that can run on Android, like apps such as Spotify, JioSaavn, and YouTube Music"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Backend can store and retrieve song metadata",
+        "Each song includes title, artist, album, duration fields",
+        "Songs can be queried by ID"
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "text": "Implement music player controls with play, pause, skip forward, and skip backward functionality",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "like apps such as Spotify, JioSaavn, and YouTube Music"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Player displays currently playing song with title and artist",
+        "Play/pause button toggles playback state",
+        "Skip forward and backward buttons navigate between songs",
+        "Progress bar shows current playback position"
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "text": "Build a browsable music library interface showing songs, albums, and artists in organized views",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "Create a song app"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Library view displays all available songs in a scrollable list",
+        "Albums view groups songs by album with album artwork",
+        "Artists view shows all artists with their songs",
+        "User can navigate between songs, albums, and artists views"
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "text": "Implement search functionality to find songs and artists by name",
+      "target": "both",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "like apps such as Spotify, JioSaavn, and YouTube Music"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Search bar accepts text input",
+        "Backend filters songs and artists matching search query",
+        "Search results display in real-time as user types",
+        "Results show both song titles and artist names"
+      ]
+    },
+    {
+      "id": "REQ-5",
+      "text": "Create playlist management system allowing users to create, name, and add songs to custom playlists",
+      "target": "both",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "like apps such as Spotify, JioSaavn, and YouTube Music"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Users can create new playlists with custom names",
+        "Users can add songs to existing playlists",
+        "Users can view all songs in a playlist",
+        "Users can remove songs from playlists",
+        "Playlists persist across sessions"
+      ]
+    },
+    {
+      "id": "REQ-6",
+      "text": "Design a mobile-optimized responsive interface with a cohesive modern music app visual theme featuring album artwork, smooth animations, and intuitive touch-friendly controls",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "can run on Android, like apps such as Spotify, JioSaavn, and YouTube Music"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Interface adapts to mobile screen sizes",
+        "Touch targets are appropriately sized for mobile interaction",
+        "Visual design follows a consistent color scheme and typography",
+        "UI includes smooth transitions between views",
+        "Album artwork is prominently displayed where relevant"
+      ]
+    },
+    {
+      "id": "REQ-7",
+      "text": "Display generated album artwork and artist images as static assets throughout the music library interface",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Album covers display in the library view",
+        "Artist images appear in artist listings",
+        "Player interface shows current song's album artwork",
+        "Images load from frontend/public/assets/generated directory"
+      ]
+    }
+  ],
+  "constraints": [
+    "Application must be built as a web application accessible on Android browsers, not a native Android app",
+    "Audio playback must use standard web audio APIs compatible with mobile browsers",
+    "All backend logic must reside in a single Motoko actor file"
+  ],
+  "nonGoals": [
+    "Native Android app development (APK/Play Store deployment)",
+    "Integration with external music streaming APIs like Spotify or Apple Music",
+    "Audio file uploading or storage beyond references",
+    "Social features like sharing or following other users",
+    "Offline playback capability",
+    "Real-time collaborative playlists"
+  ],
+  "imageRequirements": {
+    "required": [
+      "Modern abstract album cover with vibrant gradients suitable for electronic music (album-electronic.dim_400x400.png)",
+      "Album cover with acoustic guitar and warm earth tones for folk music (album-folk.dim_400x400.png)",
+      "Bold urban street art style album cover for hip-hop music (album-hiphop.dim_400x400.png)",
+      "Elegant classical music album cover with orchestral instruments (album-classical.dim_400x400.png)",
+      "Energetic rock music album cover with electric guitar imagery (album-rock.dim_400x400.png)",
+      "Minimalist portrait of a male artist in professional music studio setting (artist-male-1.dim_300x300.png)",
+      "Portrait of a female artist with headphones in recording booth (artist-female-1.dim_300x300.png)",
+      "Music band group photo with 4 members holding instruments (artist-band-1.dim_300x300.png)"
+    ],
+    "edits": []
+  }
+}

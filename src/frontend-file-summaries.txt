@@ -1,0 +1,22 @@
+{
+  "frontend/src/App.tsx": "Main application component with TanStack Router setup, defining all routes (home, library, search, playlists) and wrapping them with AudioPlayerProvider and Layout.",
+  "frontend/src/hooks/useQueries.ts": "React Query hooks for all backend operations including fetching songs, searching, creating playlists, adding songs to playlists, and managing data invalidation.",
+  "frontend/src/hooks/useAudioPlayer.tsx": "Custom React context and hook managing audio playback state using HTML5 Audio API, handling play/pause, skip controls, queue management, and progress tracking.",
+  "frontend/src/utils/imageMapper.ts": "Utility functions mapping song metadata (album, artist) to generated static image assets and formatting duration display.",
+  "frontend/src/components/Layout.tsx": "Main layout component with bottom navigation bar, music player positioning, and footer with attribution link.",
+  "frontend/src/components/MusicPlayer.tsx": "Fixed bottom music player displaying current song with album artwork, play/pause/skip controls, and seekable progress bar.",
+  "frontend/src/components/AlbumArtwork.tsx": "Reusable component displaying album artwork images from generated assets with configurable sizes (sm, md, lg).",
+  "frontend/src/components/SongList.tsx": "Scrollable list of songs with album artwork, play controls, duration display, and dropdown menu for adding to playlists.",
+  "frontend/src/components/AlbumGrid.tsx": "Grid layout displaying albums grouped from songs with artwork, play button overlay on hover, and click to play functionality.",
+  "frontend/src/components/ArtistList.tsx": "Grid layout showing unique artists with circular profile images and song counts, clickable to play artist's songs.",
+  "frontend/src/components/SearchBar.tsx": "Debounced search input component with search icon, triggering search callback after 300ms delay.",
+  "frontend/src/components/CreatePlaylistDialog.tsx": "Modal dialog for creating new playlists with name input field and form submission handling.",
+  "frontend/src/components/AddToPlaylistDialog.tsx": "Modal dialog for adding songs to existing playlists by entering playlist name.",
+  "frontend/src/pages/HomePage.tsx": "Home page displaying recently added songs and auto-populating sample songs if library is empty.",
+  "frontend/src/pages/LibraryPage.tsx": "Library page with tabbed interface showing Songs, Albums, and Artists views using respective components.",
+  "frontend/src/pages/SearchPage.tsx": "Search page with search bar and results display, showing empty state when no search term entered.",
+  "frontend/src/pages/PlaylistsPage.tsx": "Playlists overview page with create playlist button and empty state prompting users to create their first playlist.",
+  "frontend/src/pages/PlaylistDetailPage.tsx": "Individual playlist detail page showing playlist name, song count, and list of songs in the playlist.",
+  "frontend/src/index.css": "Global styles with OKLCH color system featuring purple/violet primary colors for music app theme in both light and dark modes.",
+  "frontend/tailwind.config.js": "Tailwind configuration with custom music app theme colors, Inter font family, custom shadows, and fade-in animation."
+}
